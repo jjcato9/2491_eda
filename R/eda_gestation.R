@@ -43,7 +43,7 @@ gest_iar <- Gestation %>% select(id,age,race)
 gest_iar
 
 # calculate the mean age by race
-gest_iar %>% group_by(race) %>% summary(mean_age = mean(age))
+gest_iar %>% group_by(race) %>% summarise(mean_age = mean(age, na.rm=T))
 
 # Activity 4 - Extensions
 
