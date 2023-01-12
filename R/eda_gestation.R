@@ -21,26 +21,29 @@ count(Gestation)
 count(Gestation, race)
 
 # number of observations by racial group and level of mother's education
-Gestation_n_race_ed <- count(Gestation, ...)
-
+Gestation_n_race_ed <- count(Gestation, race, ed)
+Gestation_n_race_ed
 
 # Activity 2 - Further summary statistics
 
 # mean age of mothers across all births
 # ensure you use a human friendly name for the value you're creating
+summarise(Gestation,mean = mean(age, na.rm=TRUE))
 
 # calculate both mothers' mean age and babies' mean weight
 summarise(Gestation, 
-          `Mean age` = ...,
-          `Mean wt`  = ...)
+          `Mean age` = mean(age, na.rm=T),
+          `Mean wt`  = mean(wt,na.rm=T))
 
 
 # Activity 3 - Grouped summaries
 
 # make a new data frame containing only id, age and race variables
+gest_iar <- Gestation %>% select(id,age,race)
+gest_iar
 
 # calculate the mean age by race
-
+gest_iar %>% group_by(race) %>% summary(mean_age = mean(age))
 
 # Activity 4 - Extensions
 
